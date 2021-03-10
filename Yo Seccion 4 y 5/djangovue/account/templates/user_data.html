@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load bootstrap %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    <ul>
+        <li><strong>Usuario: </strong>{{ user.username }}</li>
+        <li><strong>Correo: </strong>{{ user.email }}</li>
+        <li><strong>Autenticado: </strong>{{ user.is_authenticated }}</li>
+        <li><strong>Autenticado: </strong>{{ user.is_anonymous }}</li>
+    </ul>
+{% else %}
+<p><a href="{% url 'login' %}">Identificate para ver el contenido</a></p>
+{% endif %}
+    
+
+{% endblock %}

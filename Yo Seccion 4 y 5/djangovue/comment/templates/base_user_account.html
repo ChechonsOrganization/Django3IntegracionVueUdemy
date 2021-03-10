@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static  'bootstrap/dist/css/bootstrap.min.css'%}">
+    <!-- importamos el css del template boostrap que descargamos -->
+    <link rel="stylesheet" href="{% static  'css/user.style.css'%}">
+    {# Importamos el font awesome #}
+    <link rel="stylesheet" href="{% static  'fontawesome/css/all.min.css'%}">
+
+
+</head>
+
+<body>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <script src="{% static  'js/jquery-3.5.1.min.js'%}"></script>
+    <!-- importamos el js del template boostrap que descargamos -->
+    <script src="{% static  'js/usuario_login.js'%}"></script>
+    <script src="{% static  'bootstrap/dist/js/bootstrap.min.js'%}"></script>
+
+</body>
+
+</html>

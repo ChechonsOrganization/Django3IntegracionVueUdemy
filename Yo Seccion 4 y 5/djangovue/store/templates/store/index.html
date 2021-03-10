@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+    <form class="form-inline justify-content-center" method="GET" id="filterStore">
+        <input type="text" name="search" value="{{ search }}" class="form-control w-25" placeholder="Buscar elemento" aria-label="Buscar elemento">
+        <select name="category_id" class="form-control w-25">
+            <option value="">Selecciona Categoría</option>
+            {% for c in categories %}
+                <option
+                    {% if category_id == c.id %} 
+                        selected
+                    {% endif %}
+                value="{{ c.id }}">{{ c.title }}</option>
+            {% endfor %}
+        </select>
+        <select name="tag_id" class="form-control w-25">
+            <option value="">Selecciona Tags</option>
+            {% for t in tags %}
+                <option
+                    {% if tag_id == t.id %} 
+                        selected
+                    {% endif %}
+                value="{{ t.id }}">{{ t.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0"><i class="fa fa-search"></i></button>
+        
+    </form>
+
+    <!-- ? New Product Start -->
+        <div class="row mt-5">
+            <div class="col-xl-12">
+                <div class="section-title mb-70">
+                    <h2>Nuevos Productos</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for e in elements %}
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-new-pro mb-30 text-center">
+                        <div class="product-img">
+                            {# e.elementimages_set.first.base_cover_name |add:'.custom.jpeg' #}
+                            {# la unica manera de referenciar de uno a muchos es con "_set"  #}
+                            {# podemos obtener la imagen pero debemos colocar "uploads/ primero"  #}
+                            {# llamamos al elementimages por el nombre base del cover, añadimos su extension  #}
+                            <a href="{% url 'store:detail' e.url_clean %}">
+                                {# Comprobar si la imagen asociada existe #}
+                                {% if e.elementimages_set.all.count %}
+                                    <img src="uploads/{{ e.elementimages_set.all.0.base_cover_name |add:'.custom.jpeg' }}" alt="{{e.elementimages_set.all.0.title}}" title="{{e.elementimages_set.all.0.title}}">
+                                {% else %}
+                                    <img src="uploads/images/image-default.jpeg" alt="Imagen por defecto" title="Producto sin imagen">
+                                {% endif %}
+                            </a>
+                        </div>
+
+                        <div class="product-caption">
+                            <h3><a href="{% url 'store:detail' e.url_clean %}">{{ e.title }}</a></h3>
+                            <span>$ {{ e.price|floatformat|intcomma }} CLP</span>
+                        </div>
+
+                        {# <p>{{ e.description | truncatechars:'200' }}</p> #}
+                        {# <a class="btn btn-success btn-sm float-right" href="{% url 'store:detail' e.id %}">Ver ID</a> #}
+                        {# <a class="btn btn-success btn-sm float-right" href="{% url 'store:detail' e.url_clean %}">Ver Slug</a> #}
+                        {# <a class="btn btn-success btn-sm float-right" href="{% url 'store:detail' e.id e.url_clean %}">Ver ID y Slug</a> #}
+            
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    <!-- ? New Product End -->
+    {# {% lorem 5 p %} #}
+
+    
+{% include 'partials/pagination.html' with page_obj=elements %}
+
+{% endblock content %}

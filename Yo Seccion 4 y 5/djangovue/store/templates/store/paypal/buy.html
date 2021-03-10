@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load storetags %}
+
+{% load humanize %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-2">
+                <div class="card-header text-white bg-dark">
+                    
+                </div>
+                <div class="card-body">
+                    <h3>{{ element.title }}</h3>
+                    <p>Vas a pagar:</p>
+                    {% if coupon %}
+                        {% include "store/fragment/detail_coupon.html" %}
+                        {# ${{ element|discount_final:coupon|floatformat|intcomma }} CLP #}
+                    {% else %}
+                        {{ element.price }}
+                    {% endif %}
+        
+                    <a class="btn btn-success mt-1" href="{{ approval_url }}">Pago</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% include 'partials/pagination.html' with page_obj=elements %}

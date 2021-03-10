@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{# C #}
+
+{% block content %}
+    <h4>Comentarios</h4>
+    {% for c in comments  %}
+        <div>
+
+            {% autoescape off %} {% endautoescape %}
+            
+            {{c.text | escape }}
+            --
+            {{c.date_posted |date:"D d M Y" }}
+
+            {% comment "Esto es un comentario" %}
+                <p>Hola Mundo</p>
+            {% endcomment %}
+        
+        </div>
+    {% endfor %}
+    <br>
+    <h4>Tabla con los ciclos de django:</h4>
+    <br>
+    <table>
+    
+        {% for c in comments  %}
+            <tr class="{% cycle 'row1' 'row2' 'row3' %}">
+                <td>{{c.text}}</td>
+            </tr>
+        {% endfor %}
+    
+    </table>
+    <br>
+    <h4>Fin tabla de ciclos</h4>
+
+{# {{5|add:"3"}} #}
+
+{# {{"SERGIO"|lower}} #} 
+
+{% endblock content %}
+
+
+        
+

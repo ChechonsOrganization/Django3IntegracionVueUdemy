@@ -1,0 +1,58 @@
+{% extends "base_user_account.html" %}
+
+{% load bootstrap %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+<form method="post" action="{% url 'account:register' %}">
+    {% csrf_token %}
+
+    <div id="formWrapper">
+
+        <div id="form">
+            <div class="logo">
+                <h2 class="text-center head">Registrate</h1>
+                
+                {% if user.is_authenticated %}
+                    {% include "partials/alert.html" with msj="Estás autenticado" %}
+                {% else %}
+                    {% include "partials/alert.html" with msj="No estás autenticado" tag="warning" %}
+                {% endif %}
+
+            </div>
+            <div class="form-item">
+                <p class="formLabel">{{ form.email.label_tag }}</p>
+                {{ form.email | append_attr:"class:form-style" }}            
+            </div>
+            <div class="form-item">
+                <p class="formLabel">{{ form.username.label_tag }}</p>
+                {{ form.username | append_attr:"class:form-style" }}            
+            </div>
+            <div class="form-item">
+                <p class="formLabel">{{ form.password1.label_tag }}</p>
+                {{ form.password1 | append_attr:"class:form-style" }}
+            </div>
+            <div class="form-item">
+                <p class="formLabel">{{ form.password2.label_tag }}</p>
+                {{ form.password2 | append_attr:"class:form-style" }}
+            </div>
+            <div class="form-item">
+                
+                {% if form.username.errors or form.password1.errors or form.password2.errors or form.email.errors%}
+                    {% include "partials/alert.html" with msj=form.username.errors tag="danger" %}
+                    {% include "partials/alert.html" with msj=form.email.errors tag="danger" %}
+                    {% include "partials/alert.html" with msj=form.password1.errors tag="danger" %}
+                    {% include "partials/alert.html" with msj=form.password2.errors tag="danger" %}
+                {% endif %}
+                
+                <p class="pull-left"><a href="{% url 'login' %}"><small>Ya tienes cuenta? Ingresa</small></a></p>
+                <input type="submit" class="login pull-right" value="Registrar">
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <table>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Payment ID
+      </th>
+      <th>
+        Precio
+      </th>
+      <th>
+        Producto
+      </th>
+      <th>
+        Acciones
+      </th>
+    </tr>
+    {% for p in payments %}
+    <tr>
+      <td>
+        {{ p.id }}
+      </td>
+      <td>
+        {{ p.payment_id }}
+      </td>
+      <td>
+        {{ p.price }}
+      </td>
+      <td>
+        {{ p.element.title }}
+      </td>
+      <td>
+        <a href="{% url 'store:detail_pay' p.id %}" target="_blank" >Ver detalle</a> 
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock content %}
+
+{% include 'partials/pagination.html' with page_obj=elements %}

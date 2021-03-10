@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+
+  <div class="card mt-2">
+    <div class="card-header text-white bg-dark">
+      <h2>Compra realizada:</h2>
+    </div>
+    <div class="card-body">
+      <h3>{{ payment.element.title }}</h3>
+      <ul>
+        <li>
+          <strong>
+            Precio:
+          </strong>
+          {% if payment.coupon_id %}
+            $ {{payment.discount|floatformat|intcomma}} CLP
+          {% else %}
+            $ {{ payment.price|floatformat|intcomma }} CLP
+          {% endif %}
+          
+        </li>
+        <li>
+          <strong>
+            Fecha de compra:
+          </strong>
+          {{ payment.created_at }}
+        </li>
+        <li>
+          <strong>
+            Medio de pago:
+          </strong>
+          Paypal
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- {% lorem 5 p %} -->
+
+{% endblock content %}
+
+{% include 'partials/pagination.html' with page_obj=elements %}

@@ -1,0 +1,11 @@
+{% load storetags %}
+
+{% load humanize %}
+
+
+<p>
+Precio: <strong>${{ element.price|floatformat|intcomma }} CLP</strong> <br>
+<span class="text-success">Descuento de: <strong>${{ element|discount:coupon|floatformat|intcomma }} CLP</strong></span>  <br>
+Total a pagar: <strong class="text-danger">${{ element|discount_final:coupon|floatformat|intcomma }} CLP</strong>
+</p>
+

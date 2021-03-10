@@ -1,0 +1,216 @@
+@font-face {
+    font-family: "Josefin Sans";
+    src: url(../fonts/JosefinSans-Regular.ttf);
+}
+
+
+/* BTN */
+
+.btn-primary{
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    transition: 350ms background-color;
+}
+
+.btn-primary:hover{
+    color: #fff;
+    background-color: #222;
+    border-color: #222;
+}
+
+/* END BTN */
+
+/* PAGINATOR BSTRP */
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #ff2020;
+    border-color: #0a0a0a;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #ff2020;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+/* END PAGINATOR BSTRP */
+
+/* CARDDETAIL */
+/* si colocamos # relacionamos el id*/
+
+.cardDetail.card{
+    border: 1px solid rgb(0,0,0);
+    border-radius: 0;
+}
+
+.cardDetail .btn-danger{
+    border-radius: 0;
+}
+
+.cardDetail .card-header{
+    border-bottom: 1px solid rgb(0,0,0);
+}
+
+.border-top{
+    border-top: 1px solid rgb(0,0,0) !important;
+}
+/* END CARDDETAIL */
+
+/* Coupon form */
+#coupon .control-label{
+    margin-right: .5rem!important;
+}
+
+/* end Coupon form */
+
+body {
+    font-family: "Josefin Sans",sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mb-70 {
+    margin-bottom: 70px;
+}
+.section-tittle h2 {
+    color: #000;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Josefin Sans",sans-serif;
+    color: #0b1c39;
+    margin-top: 0px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: normal;
+    text-decoration: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .section-tittle h2{
+        font-size:37px
+    }
+}
+@media (max-width: 575px){
+    .section-tittle h2{
+        font-size:33px
+    }
+}
+@media only screen and (max-width: 767px) and (min-width: 576px){
+    .section-padding30 {
+    padding-top: 60px;
+    padding-bottom: 28px;
+    }
+}
+.section-padding30 {
+    padding-top: 200px;
+    padding-bottom: 170px;
+}
+.single-new-pro .product-img {
+    overflow:hidden;
+    margin-bottom:30px
+}
+
+.single-new-pro .product-img img{
+    width:100%;transform:scale(1);
+    -webkit-transition:all .4s ease-out 0s;
+    -moz-transition:all .4s ease-out 0s;
+    -ms-transition:all .4s ease-out 0s;
+    -o-transition:all .4s ease-out 0s;
+    transition:all .4s ease-out 0s
+}
+
+.single-new-pro .product-caption h3 a{
+    color:#444444;
+    font-weight:700;
+    font-size:24px;
+    margin-bottom:12px
+}
+@media only screen and (min-width: 576px) and (max-width: 767px){
+    .single-new-pro .product-caption h3 a{
+        font-size:17px}
+    }
+
+@media (max-width: 575px){
+    .single-new-pro .product-caption h3 a{
+        font-size:20px}
+    }
+    .single-new-pro .product-caption span{
+        color:#ff2020;
+        font-size:18px;
+        font-weight:500;
+        display:block
+    }
+    .single-new-pro:hover .product-img img{
+        transform:scale(1.04)
+    }
+    .gallery-area .single-gallery{
+        position:relative;overflow:hidden
+    }
+    .gallery-area .single-gallery::before{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        height:100%;
+        width:100%;
+        content:"";
+        background-color:rgba(1,10,28,0.3);
+        opacity:0;z-index:1;
+        -webkit-transition:all .4s ease-out 0s;
+        -moz-transition:all .4s ease-out 0s;
+        -ms-transition:all .4s ease-out 0s;
+        -o-transition:all .4s ease-out 0s;
+        transition:all .4s ease-out 0s
+}
+a, button {
+    color: #fff;
+    outline: medium none;
+}
+a{
+    color: #635c5c;
+}
+a:focus, a:hover, .portfolio-cat a:hover, .footer -menu li a:hover {
+    text-decoration: none;
+}
+/* FILTER FORM */
+
+#filterStore input[name="search"],
+#filterStore select[name="category_id"]{
+    border-right-width: 0;
+    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#filterStore select[name="category_id"]{
+    border-radius: 0;
+}
+
+#filterStore button{
+    border-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+/* END FILTER FORM */
+

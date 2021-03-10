@@ -1,0 +1,36 @@
+Posibles problemas con Twitter
+En Twitter es probable que te pueda pasar un error como el siguiente:
+
+django.db.utils.InternalError
+django.db.utils.InternalError: (1366, "Incorrect string value: '\\xF0\\x9F\\x87\\xBB\\xF0\\x9F...' for column 'last_name' at row 1")
+
+Como puedes ver, es un problema de codificación del a base de datos; por lo tanto el error debería de solventarse si cambiamos la codificación de la base de datos a nivel de la tabla y columna afectada:
+
+ALTER DATABASE djangovueelement2 CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci';
+ALTER TABLE djangovueelement2.auth_user MODIFY COLUMN last_name VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+Y si no te funciona, tendrías que probar crear una nueva base de datos mediante SQL:
+
+CREATE DATABASE <dbname> CHARACTER SET utf8;
+
+Configurar tu Django:
+
+DATABASES = {
+    'default': {
+        'ENGINE':'Django.db.backends.mysql',
+        ...
+        'OPTIONS': {'charset': 'utf8mb4'},
+    }
+}
+Documentación de ayuda:
+
+https://www.it-swarm.dev/es/python/error-de-valor-de-cadena-incorrecta-de-mysql-al-guardar-una-cadena-unicode-en-django/968271636/
+
+
+API key
+Gbk0AOZf6PT1wDvAaaiosfw4w
+
+API secret key
+SF59n5zTX6GXVGt48a7UvMXSsDP9FZdr0cyGr0TmfrTeMbHBbz
+
+Bearer token
+AAAAAAAAAAAAAAAAAAAAAPzoGAEAAAAA9RuvMqP4TxQj41ALiiAnXRKt7Fs%3DIRserWwfWNGPvDfYiRQCwJgytghvGb6Gzty2tS4f9rBwPTOOOl

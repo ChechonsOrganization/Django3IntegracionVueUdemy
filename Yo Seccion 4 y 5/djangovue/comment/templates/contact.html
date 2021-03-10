@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+    
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Formulario de contacto</h3>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                {% if form.errors %}
+                    {% for field in form  %}
+                        {% for error in field.errors  %}
+                            <div class="alert alert-danger">
+                                <strong>{{field.name}}:</strong> {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+                    
+                <!-- {{ form.errors }} -->
+                <!-- {{ form.phone.errors }} -->
+
+                {{ form|bootstrap }}
+                
+                <input type="submit" class="btn btn-primary" value="Enviar">
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
+        
+        
+
+        
